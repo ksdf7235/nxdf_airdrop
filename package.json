@@ -1,0 +1,7 @@
+{
+  "name": "nxdf-event",
+  "scripts": {
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:airdrop-front": "firebase deploy --only hosting:nxdf-airdrop"
+  }
+}
