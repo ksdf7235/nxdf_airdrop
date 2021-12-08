@@ -54,7 +54,7 @@ export const requestAirdrop = functions.https.onRequest(async (request, response
     validReferrer ? REWARD_AMOUNT + REFERRER_REWARD_AMOUNT : REWARD_AMOUNT
   )
 
-  if (validReferrer) {
+  if (referrerUser && referrerUser.wallet_address) {
     await sendNxdfToken(referrerUser.wallet_address, REFERRER_REWARD_AMOUNT)
   }
 
