@@ -5,6 +5,7 @@ import Flex from '../components/Box/Flex'
 import { useIsMobile } from '../hooks/useIsMobile'
 import { useQuery } from '../hooks/useQuery'
 import { useWallet } from '../hooks/useWallet'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {}
 
@@ -18,12 +19,13 @@ const Main = (props: Props) => {
   const query = useQuery()
   const isMobile = useIsMobile()
   const userId = query.get('user_id')
+  const navigate = useNavigate()
 
   const handleSubmit = async () => {
     if (userId && walletAddress) {
       const result = await requestAirdrop(userId, walletAddress, referral)
       if (result.status === 'done') {
-        alert('Success')
+        navigate('/result')
       } else {
         if (result?.exception?.type === 'already-joined') {
           console.error(result)
