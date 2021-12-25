@@ -4,3 +4,13 @@ export interface User {
   wallet_address: string
   referral_email?: string
 }
+
+export enum ExceptionType {
+  ALREADY_JOINED = 'already-joined',
+  INVALID_PARAMS = 'invalid-params',
+}
+
+export enum ResponseStatus {
+  ERROR = 'error',
+  SUCCESS = 'success',
+}
