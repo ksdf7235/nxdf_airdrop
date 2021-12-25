@@ -7,13 +7,13 @@ const eventUserRef = db.ref('event_users')
 export const retrieveUserByEmail = async (eventId: string, email: string): Promise<User> => {
   const snap = await eventUserRef.child(eventId).orderByChild('email').equalTo(email).once('value')
 
-  return snap.val() ?? undefined
+  return (Object.values(snap.val() ?? {})[0] as User) ?? undefined
 }
 
 export const retrieveUserByWalletAddr = async (eventId: string, walletAddr: string): Promise<User> => {
   const snap = await eventUserRef.child(eventId).orderByChild('wallet_address').equalTo(walletAddr).once('value')
 
-  return snap.val() ?? undefined
+  return (Object.values(snap.val() ?? {})[0] as User) ?? undefined
 }
 
 export const writeUser = async (user: User) => {

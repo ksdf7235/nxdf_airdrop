@@ -28,6 +28,8 @@ export const requestAirdrop = functions
     const referralEmail = request.body?.['referral_email']
     const walletAddress = request.body?.['wallet_address']
 
+    functions.logger.info(request.body)
+
     if (!email || !walletAddress || typeof eventId !== 'string') {
       response.json({ staus: 'error', exception: { type: 'invalid-params', message: 'Invalid params' } })
       return
@@ -45,6 +47,12 @@ export const requestAirdrop = functions
 
     const referrerUser = referralEmail ? await retrieveUserByEmail(eventId, referralEmail) : null
     const validReferrer = referrerUser && referrerUser.wallet_address
+
+    functions.logger.info({
+      referralEmail,
+      referrerUser,
+      validReferrer,
+    })
 
     const user: User = {
       event_id: eventId,
