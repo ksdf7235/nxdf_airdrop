@@ -24,7 +24,10 @@ const Main = (props: Props) => {
   const handleSubmit = async () => {
     if (userId && walletAddress) {
       const result = await requestAirdrop(userId, walletAddress, referral)
-      if (result.status === 'done') {
+
+      console.log(result)
+
+      if (result.status === 'success') {
         navigate('/result')
       } else {
         if (result?.exception?.type === 'already-joined') {
@@ -37,7 +40,7 @@ const Main = (props: Props) => {
       }
     } else {
       console.error({ userId, walletAddress, referral })
-      alert('Something wrong..')
+      alert('Required param missed')
     }
   }
 
