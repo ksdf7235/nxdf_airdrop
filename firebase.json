@@ -5,6 +5,12 @@
   "hosting": {
     "predeploy": "npm --prefix airdrop-front run build",
     "site": "nxdf-airdrop",
-    "public": "./airdrop-front/build"
+    "public": "./airdrop-front/build",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
