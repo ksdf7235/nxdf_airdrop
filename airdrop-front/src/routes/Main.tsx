@@ -80,7 +80,11 @@ const Main = (props: Props) => {
         <Flex className="background" alignItems="center" flexDirection="column">
           <div className="you-dont">You don’t have a NXDF wallet?</div>
           <div className="dont-worry">Don’t worry follow this video!</div>
-          <button>Check Youtube Video</button>
+          <button>
+            <a href="https://youtu.be/ylq1ozwtrdw" target="_blank" rel="noreferrer">
+              Check Youtube Video
+            </a>
+          </button>
         </Flex>
       </Flex>
       <Flex className="submit row" pt="80px">
