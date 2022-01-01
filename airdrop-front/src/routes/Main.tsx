@@ -15,6 +15,7 @@ const Main = (props: Props) => {
   const [loading, setLoading] = useState(false)
   const [referral, setReferral] = useState<string>('')
   const { walletAddress, connectWallet } = useWallet()
+  const [address, setAddress] = useState('')
 
   const query = useQuery()
   const isMobile = useIsMobile()
@@ -23,7 +24,7 @@ const Main = (props: Props) => {
 
   const handleSubmit = async () => {
     if (userId && walletAddress) {
-      const result = await requestAirdrop(userId, walletAddress, referral)
+      const result = await requestAirdrop(userId, address, referral)
 
       console.log(result)
 
@@ -43,6 +44,12 @@ const Main = (props: Props) => {
       alert('Required param missed')
     }
   }
+
+  useEffect(() => {
+    if (walletAddress) {
+      setAddress(walletAddress)
+    }
+  }, [walletAddress])
 
   return (
     <Wrapper isMobile={isMobile}>
@@ -97,8 +104,10 @@ const Main = (props: Props) => {
           <Flex flexDirection="column" mb="10px">
             <Flex flexDirection="column">
               <div className="label">Enter your NXDF wallet address</div>
-              {walletAddress ? (
-                <input type="text" disabled value={walletAddress} />
+              {isMobile ? (
+                <input type="text" value={address ?? ''} onChange={(e) => setAddress(e.target.value)} />
+              ) : walletAddress ? (
+                <input type="text" disabled value={address} />
               ) : (
                 <button className="connect-button" onClick={connectWallet}>
                   <img src="/img/icon-wallet.svg" alt="connect to a wallet" />
