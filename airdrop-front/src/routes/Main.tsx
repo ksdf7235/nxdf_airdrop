@@ -26,14 +26,15 @@ const Main = (props: Props) => {
   const handleSubmit = async () => {
     const isValidAddress = getIsValidSolanaAddress(address)
 
-    if (isValidAddress) {
+    console.log({ isValidAddress, address })
+
+    if (!isValidAddress) {
       alert('Invalid wallet address')
+      return
     }
 
     if (userId && address) {
       const result = await requestAirdrop(userId, address, referral)
-
-      console.log(result)
 
       if (result.status === 'success') {
         navigate('/result')
@@ -78,10 +79,18 @@ const Main = (props: Props) => {
             facebook, you get double NXDF bonus!
           </Flex>
           <Flex style={{ gap: '20px' }}>
-            <img className="social" src="/img/icon-reddit@3x.png" alt="reddit" />
-            <img className="social" src="/img/icon-twitter@3x.png" alt="twitter" />
-            <img className="social" src="/img/icon-facebook@3x.png" alt="facebook" />
-            <img className="social" src="/img/icon-youtube@3x.png" alt="youtube" />
+            <a href="https://www.reddit.com/r/next_defi_protocol/" target="_blank" rel="noreferrer">
+              <img className="social" src="/img/icon-reddit@3x.png" alt="reddit" />
+            </a>
+            <a href="https://twitter.com/NXDF16" target="_blank" rel="noreferrer">
+              <img className="social" src="/img/icon-twitter@3x.png" alt="twitter" />
+            </a>
+            <a href="https://t.me/nxdfprotocol" target="_blank" rel="noreferrer">
+              <img className="social" src="/img/icon-facebook@3x.png" alt="facebook" />
+            </a>
+            <a href="https://www.youtube.com/channel/UCMdPUPpCTVf-OHvMLCdzxOQ" target="_blank" rel="noreferrer">
+              <img className="social" src="/img/icon-youtube@3x.png" alt="youtube" />
+            </a>
           </Flex>
         </Flex>
         {!isMobile && (

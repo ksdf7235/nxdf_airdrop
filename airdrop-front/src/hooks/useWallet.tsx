@@ -8,13 +8,9 @@ export const useWallet = () => {
     try {
       const { solana } = window
 
-      console.log(solana)
-
       if (solana) {
         if (solana.isPhantom) {
-          console.log('Phantom wallet found!')
           const response = await solana.connect({ onlyIfTrusted: true })
-          console.log('Connected with Public Key:', response.publicKey.toString())
 
           /*
            * Set the user's publicKey in state to be used later!
@@ -34,7 +30,6 @@ export const useWallet = () => {
 
     if (solana) {
       const response = await solana.connect()
-      console.log('Connected with Public Key:', response.publicKey.toString())
       setWalletAddress(response.publicKey.toString())
     }
   }
