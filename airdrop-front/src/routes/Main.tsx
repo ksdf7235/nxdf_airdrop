@@ -123,7 +123,7 @@ const Main = (props: Props) => {
                 <input type="text" value={referral} onChange={(e) => setReferral(e.target.value)} />
                 <div className="badge">
                   <span className="K-More-Bonus">
-                    <span className="text-style-1">5K</span>
+                    <span className="text-style-1">MAX 5K</span>
                     <span>More Bonus!</span>
                   </span>
                 </div>
