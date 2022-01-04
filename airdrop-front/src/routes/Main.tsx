@@ -6,6 +6,7 @@ import { useIsMobile } from '../hooks/useIsMobile'
 import { useQuery } from '../hooks/useQuery'
 import { useWallet } from '../hooks/useWallet'
 import { useNavigate } from 'react-router-dom'
+import { getIsValidSolanaAddress } from '../util/isValidSolanaAddress'
 
 interface Props {}
 
@@ -23,7 +24,13 @@ const Main = (props: Props) => {
   const navigate = useNavigate()
 
   const handleSubmit = async () => {
-    if (userId && walletAddress) {
+    const isValidAddress = getIsValidSolanaAddress(address)
+
+    if (isValidAddress) {
+      alert('Invalid wallet address')
+    }
+
+    if (userId && address) {
       const result = await requestAirdrop(userId, address, referral)
 
       console.log(result)
