@@ -1,30 +1,30 @@
 # NXDF AIR DROP
 
 
-### Deploy
+## Deploy
 
 
-⚠️ Requirement
+### ⚠️ Requirement
 
 - Install firebase-tools
 
-```
-  npm install -g firebase-tools
-```
+  ```
+    npm install -g firebase-tools
+  ```
 
 - Login firebase-tools
 
-```
- firebase login <Your account>
-```
+  ```
+  firebase login <Your account>
+  ```
 
-Deploy functions
+### Deploy functions
 
 ```bash
   npm run deploy:functions
 ```
 
-Deploy airdrop-front
+### Deploy airdrop-front
 
 ```bash
   npm run deploy:airdrop-front
