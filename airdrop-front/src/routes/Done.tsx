@@ -6,7 +6,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 interface Props {}
 
-const INVITATION_LINK = 'https://discord.gg/BUya5FAE'
+const INVITATION_LINK = 'https://discord.gg/vZard7w6sK'
 
 const Done = (props: Props) => {
   const isMobile = useIsMobile()
