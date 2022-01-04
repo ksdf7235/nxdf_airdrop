@@ -85,9 +85,9 @@ const Main = (props: Props) => {
             <a href="https://twitter.com/NXDF16" target="_blank" rel="noreferrer">
               <img className="social" src="/img/icon-twitter@3x.png" alt="twitter" />
             </a>
-            <a href="https://t.me/nxdfprotocol" target="_blank" rel="noreferrer">
+            {/* <a href="https://t.me/nxdfprotocol" target="_blank" rel="noreferrer">
               <img className="social" src="/img/icon-facebook@3x.png" alt="facebook" />
-            </a>
+            </a> */}
             <a href="https://www.youtube.com/channel/UCMdPUPpCTVf-OHvMLCdzxOQ" target="_blank" rel="noreferrer">
               <img className="social" src="/img/icon-youtube@3x.png" alt="youtube" />
             </a>
