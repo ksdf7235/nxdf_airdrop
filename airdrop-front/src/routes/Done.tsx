@@ -2,8 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import Flex from '../components/Box/Flex'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 interface Props {}
+
+const INVITATION_LINK = 'https://discord.gg/BUya5FAE'
 
 const Done = (props: Props) => {
   const isMobile = useIsMobile()
@@ -24,7 +27,9 @@ const Done = (props: Props) => {
           </span>
         </Flex>
         <Flex>
-          <button>Copy this event invitation link</button>
+          <CopyToClipboard text={INVITATION_LINK} onCopy={() => alert('Copied')}>
+            <button>Copy this event invitation link</button>
+          </CopyToClipboard>
         </Flex>
       </Flex>
     </Wrapper>
