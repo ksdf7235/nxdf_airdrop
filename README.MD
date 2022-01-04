@@ -3,6 +3,21 @@
 
 ### Deploy
 
+
+⚠️ Requirement
+
+- Install firebase-tools
+
+```
+  npm install -g firebase-tools
+```
+
+- Login firebase-tools
+
+```
+ firebase login <Your account>
+```
+
 Deploy functions
 
 ```bash
