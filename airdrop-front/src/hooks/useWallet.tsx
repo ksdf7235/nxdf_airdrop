@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useIsMobile } from './useIsMobile'
 
 export const useWallet = () => {
   const [walletAddress, setWalletAddress] = useState(null)
+  const isMobile = useIsMobile()
 
   // Actions
   const checkIfWalletIsConnected = async () => {
@@ -37,11 +39,14 @@ export const useWallet = () => {
   // UseEffects
   useEffect(() => {
     const onLoad = async () => {
+      if (isMobile) {
+        return
+      }
       await checkIfWalletIsConnected()
     }
     window.addEventListener('load', onLoad)
     return () => window.removeEventListener('load', onLoad)
-  }, [])
+  }, [isMobile])
 
   return {
     walletAddress,
