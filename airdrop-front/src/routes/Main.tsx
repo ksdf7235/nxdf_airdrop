@@ -359,7 +359,7 @@ const Wrapper = styled.div<{ isMobile: boolean }>`
       }
 
       .K-More-Bonus .text-style-1 {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 900;
       }
     }
