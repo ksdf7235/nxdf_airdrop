@@ -22,8 +22,16 @@ const Done = (props: Props) => {
         </Flex>
         <Flex mb="60px">
           <span className="Your-friends-you-w">
-            Your friends & you will receive <span className="text-style-1">5,000 NXDF</span> in a minutes. Check out
-            your wallet. Don’t forget to give your friend NXDF discord invitation.
+            More detail of the results will be announced in the NeXt-DeFi Protocol discord community. Stay tuned on our
+            official twitter{' '}
+            <a href="https://twitter.com/NXDF16" target="_blank" rel="noreferrer">
+              https://twitter.com/NXDF16
+            </a>{' '}
+            and Discord{' '}
+            <a href="https://discord.gg/KH2YywfrgS" target="_blank" rel="noreferrer">
+              https://discord.gg/KH2YywfrgS
+            </a>{' '}
+            Don't forget to send your friends NXDF discord invitations.
           </span>
         </Flex>
         <Flex>
