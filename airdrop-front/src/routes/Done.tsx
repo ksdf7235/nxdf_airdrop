@@ -20,7 +20,7 @@ const Done = (props: Props) => {
         <Flex className="header" mb="15px">
           Congratulations!
         </Flex>
-        <Flex mb="60px">
+        <Flex mb="80px">
           <span className="Your-friends-you-w">
             More detail of the results will be announced in the NeXt-DeFi Protocol discord community. Stay tuned on our
             official twitter{' '}
