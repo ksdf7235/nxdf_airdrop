@@ -1,12 +1,14 @@
 const REQUEST_AIRDROP_URL = 'https://us-central1-eminent-glider-213307.cloudfunctions.net/requestAirdrop'
 // const REQUEST_AIRDROP_URL = 'http://localhost:5001/eminent-glider-213307/us-central1/requestAirdrop'
 
-export const requestAirdrop = async (userId: string, walletAddr: string, referral?: string) => {
+export const requestAirdrop = async (userId: string, walletAddr: string, referral?: string, retweetLink?: string, redditLink?: string) => {
   const params = {
     email: userId,
     event_id: '0',
     wallet_address: walletAddr,
     referral_email: referral,
+    retweet_link: retweetLink,
+    reddit_link: redditLink,
   }
 
   const resp = await fetch(REQUEST_AIRDROP_URL, {

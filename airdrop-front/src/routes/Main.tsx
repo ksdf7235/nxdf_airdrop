@@ -15,6 +15,8 @@ export const CONTAINER_WIDTH = '1100px'
 const Main = (props: Props) => {
   const [loading, setLoading] = useState(false)
   const [referral, setReferral] = useState<string>('')
+  const [retweetLink, setRetweetLink] = useState<string>('')
+  const [redditLink, setRedditLink] = useState<string>('')
   const { walletAddress, connectWallet } = useWallet()
   const [address, setAddress] = useState('')
 
@@ -34,7 +36,7 @@ const Main = (props: Props) => {
     }
 
     if (userId && address) {
-      const result = await requestAirdrop(userId, address, referral)
+      const result = await requestAirdrop(userId, address, referral, retweetLink, redditLink);
 
       if (result.status === 'success') {
         navigate('/result')
@@ -48,7 +50,7 @@ const Main = (props: Props) => {
         }
       }
     } else {
-      console.error({ userId, walletAddress, referral })
+      console.error({ userId, walletAddress, referral, retweetLink, redditLink })
       alert('Required param missed')
     }
   }
@@ -132,11 +134,11 @@ const Main = (props: Props) => {
               )}
             </Flex>
           </Flex>
-          <Flex mb="42px">
+          <Flex>
             <Flex flexDirection="column" width={isMobile ? '100%' : 'inherit'}>
               <div className="label">Enter your friend’s email address</div>
               <Flex>
-                <input type="text" value={referral} onChange={(e) => setReferral(e.target.value)} />
+                <input type="text" value={retweetLink} onChange={(e) => setRetweetLink(e.target.value)} />
                 <div className="badge">
                   <span className="K-More-Bonus">
                     <span className="text-style-1">MAX 5K</span>
@@ -146,7 +148,23 @@ const Main = (props: Props) => {
               </Flex>
             </Flex>
           </Flex>
-          <Flex justifyContent={isMobile ? 'center' : 'initial'}>
+          <Flex>
+            <Flex flexDirection="column" width={isMobile ? '100%' : 'inherit'}>
+              <div className="label">Retweet NXDF's tweet to your followers then, enter your retweet link</div>
+              <Flex>
+                <input type="text" className="full" value={redditLink} onChange={(e) => setRedditLink(e.target.value)} />
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex>
+            <Flex flexDirection="column" width={isMobile ? '100%' : 'inherit'}>
+              <div className="label">Upvote, leave your comment on our reddit then, enter your reddit comment link</div>
+              <Flex>
+                <input type="text" className="full" value={referral} onChange={(e) => setReferral(e.target.value)} />
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex mt="42px" justifyContent={isMobile ? 'center' : 'initial'}>
             <button className="submit-button" onClick={handleSubmit}>
               Submit
             </button>
@@ -318,6 +336,10 @@ const Wrapper = styled.div<{ isMobile: boolean }>`
       padding: 0 10px;
       color: white;
       font-size: 18px;
+    }
+
+    input.full {
+      width: ${({isMobile}) => (isMobile ? '100%' : '585px')};
     }
 
     .submit-button {

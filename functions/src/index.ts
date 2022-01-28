@@ -27,6 +27,8 @@ export const requestAirdrop = functions
     const eventId = request.body?.['event_id']
     const referralEmail = request.body?.['referral_email']
     const walletAddress = request.body?.['wallet_address']
+    const retweetLink = request.body?.['retweet_link']
+    const redditLink = request.body?.['reddit_link']
 
     functions.logger.info(request.body)
 
@@ -59,6 +61,8 @@ export const requestAirdrop = functions
       email: email,
       wallet_address: walletAddress,
       referral_email: validReferrer ? referralEmail : null,
+      retweet_link: retweetLink,
+      reddit_link: redditLink,
     }
 
     await writeUser(user)

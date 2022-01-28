@@ -3,6 +3,8 @@ export interface User {
   email: string
   wallet_address: string
   referral_email?: string
+  retweet_link?: string
+  reddit_link?: string
 }
 
 export enum ExceptionType {
