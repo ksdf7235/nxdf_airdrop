@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import Done from './routes/Done'
+import Lotto from './routes/Lotto'
 import Main from './routes/Main'
 import GlobalStyle from './style/GlobalCss'
 import ResetCSS from './style/ResetCss'
@@ -26,6 +27,14 @@ const RootRouter = (props: Props) => {
           element={
             <BackgroundWrapper>
               <Done />
+            </BackgroundWrapper>
+          }
+        />
+        <Route
+          path="/events/lotto"
+          element={
+            <BackgroundWrapper>
+              <Lotto/>
             </BackgroundWrapper>
           }
         />
