@@ -13,11 +13,10 @@ const HeaderNav = styled.nav`
   left:0;
   justify-content:space-evenly;
   align-items:center;
+  z-index: 100;
+  padding-top: 5px;
 `
-const Logo=styled.h1`
-  font-size:1.7rem;
-  font-weight:bold;
-`
+
 const MenuDiv=styled.div`
   font-size:1.2rem;
   font-weight:bold;
@@ -38,10 +37,33 @@ const NextDraw=styled.p`
   -webkit-text-fill-color: transparent;
 `
 
+const LogoIcon = styled.div`
+  width: 3rem;
+  height: 3rem;
+  margin-right: 10px;
+  margin-bottom: 3px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("/img/icon-nxdflogo.png");
+`
+
+const LogoDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const Logo=styled.h1`
+  font-size:1.7rem;
+  font-weight:bold;
+`
 function Header() {
   return (
     <HeaderNav>
-      <Logo>NXDF LOTTO</Logo>
+      <LogoDiv>
+        <LogoIcon></LogoIcon>
+        <Logo>NXDF LOTTO</Logo>
+      </LogoDiv>
       <MenuDiv>
         <MenuSpan>ABOUT US</MenuSpan>
         <MenuSpan>CALCULATOR</MenuSpan>
