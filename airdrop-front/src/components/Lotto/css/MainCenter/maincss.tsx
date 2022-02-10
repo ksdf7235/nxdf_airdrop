@@ -16,9 +16,13 @@ export const PotUsdContainer=styled.div`
   margin-bottom:60px;
 `
 export const CurrentJackpot=styled.h1`
-  font-size:5em;
-  color:white;
+  font-size:8em;
+  color:#F486C0;
+  font-weight: 500;
   text-align: center;
+  font-family: "Neoneon";
+  text-shadow: 0 0 0 #F486C0, 0 0 0px #F486C0, 0 0 0px #F486C0, 0 0 10px #e6469b,
+    0 0 0px #C5BAFA, 0 0 8px #C5BAFA, 0 0 0px #C5BAFA, 0 0 10px #C5BAFA;
   :last-of-type{
     margin-bottom: 60px;
   }
@@ -69,28 +73,31 @@ export const SlideInput=styled.input`
 //타이머
 
 export const TimerContainer = styled.div`
-  height: 100px;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
 `
 export const TimerBox = styled.div`
-  width : 50px;
-  height : 60px;
-  border-radius: 5px;
+  width : 100%;
+  height : 100%;
+  border-radius: 10px;
   padding: 10px;
   background-color: #424242;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 3px;
+  margin: 10px;
+  margin-bottom: 40%;
   color : white;
   span{
     font-weight: bold;
+    font-size: 1.5rem;
     :first-child{
-      font-size: 25px;
+      font-size: 3rem;
       margin-bottom: 3px;
     }
   }
@@ -115,7 +122,6 @@ export const BackgroundDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 `
 
 export const BtnDiv = styled.div`
