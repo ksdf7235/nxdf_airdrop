@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-scroll'
 
 const HeaderNav = styled.nav`
   width:100%;
   min-height:5rem;
   color:white;
-  box-shadow:0 0 20px grey;
   display:flex;
   position:fixed;
-  background-color:#151f42;
+  background-color:#453C70;
   top:0;
   left:0;
   justify-content:space-evenly;
@@ -18,23 +18,19 @@ const HeaderNav = styled.nav`
 `
 
 const MenuDiv=styled.div`
-  font-size:1.2rem;
+  font-size:1.5rem;
   font-weight:bold;
 `
 const MenuSpan=styled.span`
   margin: 0 20px;
   &:hover{
-    background-image: linear-gradient(45deg,#00F0F0,#E91AF0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:rgb(220, 52, 141);
   }
 `
 const NextDraw=styled.p`
   font-size:1.4rem;
   font-weight:bold;
-  background-image: linear-gradient(45deg,#00F0F0,#E91AF0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color:rgb(220, 52, 141);
 `
 
 const LogoIcon = styled.div`
@@ -55,21 +51,30 @@ const LogoDiv = styled.div`
 `
 const Logo=styled.h1`
   font-size:1.7rem;
-  font-weight:bold;
+  font-weight:700;
+
 `
 function Header() {
   return (
     <HeaderNav>
-      <LogoDiv>
-        <LogoIcon></LogoIcon>
-        <Logo>NXDF LOTTO</Logo>
-      </LogoDiv>
+      <Link to="Main" spy={true} smooth={true} offset={-80}>
+        <LogoDiv>
+          <LogoIcon></LogoIcon>
+          <Logo>NXDF LOTTO</Logo>
+        </LogoDiv>
+      </Link>
       <MenuDiv>
-        <MenuSpan>ABOUT US</MenuSpan>
-        <MenuSpan>CALCULATOR</MenuSpan>
-        <MenuSpan>WINNERS</MenuSpan>
+        <Link to="About" spy={true} smooth={true} offset={-80}>
+          <MenuSpan>About us</MenuSpan>
+        </Link>
+        <Link to="Calculator" spy={true} smooth={true} offset={-80}>
+          <MenuSpan>Calculator</MenuSpan>
+        </Link>
+        <Link to="winners" spy={true} smooth={true} offset={-80}>
+          <MenuSpan>Winners</MenuSpan>
+        </Link>
       </MenuDiv>
-      <NextDraw>next draw: saturday 2:00 pm UTC</NextDraw>
+      <NextDraw>Next Draw Saturday 2:00 PM UTC</NextDraw>
     </HeaderNav>
   );
 }

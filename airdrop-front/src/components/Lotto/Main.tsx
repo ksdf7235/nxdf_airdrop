@@ -1,143 +1,86 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Slider from 'react-input-slider';
+import Timer from '../Lotto/Timer';
 import { useWallet } from '../../hooks/useWallet'
-import {PotContainer,PotSolContainer,PotUsdContainer,CurrentJackpot,GetTicket,BuyMultipleTicket,SlideDiv,SlideInput,TimerContainer,GetTicketContainer,TimerBox,BtnDiv, BackgroundDiv} from "./css/MainCenter/maincss"
+import {PotContainer,PotSolContainer,PotUsdContainer,CurrentJackpot,GetTicket,BuyMultipleTicket,TimerContainer,GetTicketContainer, BackgroundDiv} from "./css/MainCenter/maincss"
 
 const MainLayout = styled.div`
   display:flex;
-  align-items:center ;
-  justify-content: center ;
-  height:100vh;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  height:100%;
   width:100vw;
-  padding-top : 5rem;
-  background-image: #453C70;
+  margin-top:5rem;
   background-color: #453C70;
+  background-image:url('/img/img-lottomen.svg'), url('/img/img-lottobox.svg');
+  background-repeat:no-repeat,no-repeat;
+  background-size:380px, 38%;
+  background-position:left, right;
+  //padding-top:5rem;
 `;
 
-const CenterDiv = styled.div`
-  width : 34%;
+const HourGlass = styled.img`
+  width: 11%;
   height: 100%;
-  display: flex ;
-  flex-direction: column ;
-  align-items: center ;
-  justify-content: center ;
-
-`
-const LeftDiv = styled.div`
-  width : 33%;
-  height: 100%;
-  display: flex ;
-  flex-direction: column ;
-  align-items: center ;
-  justify-content: center ;
-`
-const RightDiv = styled.div`
-  width : 33%;
-  height: 100%;
-  display: flex ;
-  flex-direction: column ;
-  align-items: center ;
-  justify-content: center ;
-`
-
-const ImgBoxDiv = styled.div`
-  margin-right: 200px;
-  width:  100%;
-  height: 60%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("/img/img-lottobox.svg");
-`
-
-const ImgmenDiv = styled.div`
-  width:  100%;
-  height: 80%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("/img/img-lottomen.svg");
-`
-
-const GetTicketRight = styled.div`
-  width: 20%;
-  height: 100%;
+  position:absolute;
+  top:-50%;
+  left:3%;
 `;
 
-const GetTicketLeft = styled.div`
-  width: 20%;
-  height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("/img/img-hourglass.svg");
-  transform: translateY(-50%) ;
-`;
-
-
-
+const SliderDiv=styled.div`
+  display:flex;
+  align-items:center;
+  margin:20px 0;
+`
+const SliderLabel=styled.div`
+  color:white;
+  font-size:1.5rem;
+  font-weight:bold;
+  margin-left:20px;
+`
 function Main() {
-  const { connectWallet,walletAddress } = useWallet()
+  const { connectWallet } = useWallet()
   const [noftic,setNoftic]=useState(1)
-  const [multiple, setMultiple] = useState(true)
+  const [multiple, setMultiple] = useState(false)
   return (
-    <MainLayout>
-      <LeftDiv>
-        <ImgmenDiv />
-      </LeftDiv>
-      <CenterDiv>
+    <MainLayout id="Main">
         <PotContainer>
-          <CurrentJackpot>CURRENT</CurrentJackpot>
-          <CurrentJackpot>JACKPOT</CurrentJackpot>
-          <PotSolContainer>47.7 ◎</PotSolContainer>
-          <PotUsdContainer>($ 5634.5)</PotUsdContainer>
+          <CurrentJackpot>CURRENT<br/>JACKPOT</CurrentJackpot>
+          <PotSolContainer>50,000 NXDF</PotSolContainer>
+          <PotUsdContainer>(1,000 $)</PotUsdContainer>
         </PotContainer>
         <GetTicketContainer>
-          <GetTicketLeft>
-
-          </GetTicketLeft>
+          <HourGlass src='/img/img-hourglass.svg'/>
           <BackgroundDiv>
           {/* 남은 시간 계산해주는 타이머 */}
             <TimerContainer>
-              <TimerBox>
-                <span>{0}</span>
-                <span>hrs</span>
-              </TimerBox>
-              <TimerBox>
-                <span>{0}</span>
-                <span>mins</span>
-              </TimerBox>
-              <TimerBox>
-                <span>{0}</span>
-                <span>secs</span>
-              </TimerBox>
+                <Timer></Timer>
             </TimerContainer>
-            <BtnDiv>
               <GetTicket onClick={connectWallet}>
                 {/* 연결해서 어떻게 작동할지 */}
                 GET {noftic} TICKET
               </GetTicket>
-              </BtnDiv>
             </BackgroundDiv>
-            <GetTicketRight>
-            </GetTicketRight>
         </GetTicketContainer>
         <BuyMultipleTicket onClick={()=>setMultiple(!multiple)}>Buy Multiple Tickets</BuyMultipleTicket>
-      </CenterDiv>
-      <RightDiv>
-        <ImgBoxDiv />
-      </RightDiv>
+        {multiple?
+        <SliderDiv>
+          <Slider styles={{track:{backgroundColor:'rgb(197, 186, 250)'}, active:{backgroundColor:'rgb(244,134,193)'}}} xmin={1} xmax={50} axis='x' x={noftic} onChange={({x})=>setNoftic(x)}></Slider>
+          <SliderLabel>{noftic} Tickets</SliderLabel>
+        </SliderDiv>
+        :
+        <SliderDiv style={{opacity:0}}>
+        <Slider styles={{track:{backgroundColor:'rgb(197, 186, 250)'}, active:{backgroundColor:'rgb(244,134,193)'}}} xmin={1} xmax={50} axis='x' x={noftic} onChange={({x})=>setNoftic(x)}></Slider>
+        <SliderLabel>{noftic} Tickets</SliderLabel>
+      </SliderDiv>
+      
+      }
     </MainLayout>
   );
 }
 
-
-// {multiple?
-//       <SlideDiv>
-//         {/* input 나오지 않는 오류 */}
-//         <SlideInput type="range" min="1" max="50"></SlideInput>
-//       </SlideDiv>:
-//       null}
 
 
 export default Main;

@@ -1,33 +1,37 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+import './font.css'
 
 export const PotContainer=styled.div`
   font-weight:bold;
-  color:#FFB701;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 `
 export const PotSolContainer=styled.div`
-  font-size:120px;
+  font-size:65px;
 `
 export const PotUsdContainer=styled.div`
-  font-size:75px;
+  font-size:65px;
   margin-bottom:60px;
 `
 export const CurrentJackpot=styled.h1`
-  font-size:5em;
-  color:white;
+  font-size:8em;
+  color:rgb(220, 52, 141);
+  color: var(--color-override,rgb(244,134,193));
+  font-weight: 500;
   text-align: center;
+  font-family: 'neoneon';
+  text-shadow: 0 0 10px rgb(220, 52, 141), 0 0 10px #e6469b;
   :last-of-type{
     margin-bottom: 60px;
   }
 `
 export const GetTicket=styled.button`
-  margin:0 auto;
-  width:100%;
+  width:80%;
   min-width:250px;
-  height:60px;
+  height:50px;
   border-radius:2px;
   background-color:#C5BAFA;
   font-size:20px;
@@ -47,7 +51,7 @@ export const BuyMultipleTicket=styled.button`
   color:#DC348C;
   font-size:18px;
   font-weight:800;
-  margin-top:80px;
+  margin-top:40px;
   border-bottom:8px solid #B75BB7;
   border-radius:2px;
 `
@@ -67,30 +71,30 @@ export const SlideInput=styled.input`
   background-color:transparent;
 `
 //타이머
-
 export const TimerContainer = styled.div`
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding-bottom:20px;
   z-index: 10;
 `
 export const TimerBox = styled.div`
-  width : 50px;
-  height : 60px;
-  border-radius: 5px;
+  width : 100%;
+  height : 100%;
+  border-radius: 10px;
   padding: 10px;
   background-color: #424242;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 3px;
+  margin: 10px;
+  margin-bottom: 40%;
   color : white;
   span{
     font-weight: bold;
+    font-size: 1.5rem;
     :first-child{
-      font-size: 25px;
+      font-size: 3rem;
       margin-bottom: 3px;
     }
   }
@@ -103,25 +107,24 @@ export const GetTicketContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  height: 15%;
-  width: 70%;
+  width: 40%;
   background-color: #352F58;
-
+  border-radius:6px;
+  min-width:400px;
 `;
 
 export const BackgroundDiv = styled.div`
-  width: 60%;
+  width: 70%;
   height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  padding:20px 0;
 `
 
 export const BtnDiv = styled.div`
   width: 80%;
   height: 50%;
-  z-index: 10;
   display: flex;
   justify-content: center;
 `
