@@ -18,7 +18,7 @@ const MainLayout = styled.div`
   background-repeat:no-repeat,no-repeat;
   background-size:380px, 38%;
   background-position:left, right;
-  padding-top:5rem;
+  //padding-top:5rem;
 `;
 
 const HourGlass = styled.img`
@@ -41,7 +41,7 @@ const SliderLabel=styled.div`
   margin-left:20px;
 `
 function Main() {
-  const { connectWallet,walletAddress } = useWallet()
+  const { connectWallet } = useWallet()
   const [noftic,setNoftic]=useState(1)
   const [multiple, setMultiple] = useState(false)
   return (

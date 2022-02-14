@@ -13,7 +13,7 @@ interface Props {}
 export const CONTAINER_WIDTH = '1100px'
 
 const Main = (props: Props) => {
-  const [loading, setLoading] = useState(false)
+  //const [loading, setLoading] = useState(false)
   const [referral, setReferral] = useState<string>('')
   const [retweetLink, setRetweetLink] = useState<string>('')
   const [redditLink, setRedditLink] = useState<string>('')

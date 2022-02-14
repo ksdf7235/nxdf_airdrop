@@ -67,9 +67,11 @@ function Header() {
           <MenuSpan>About us</MenuSpan>
         </Link>
         <Link to="Calculator" spy={true} smooth={true} offset={-80}>
-        <MenuSpan>Calculator</MenuSpan>
+          <MenuSpan>Calculator</MenuSpan>
         </Link>
-        <MenuSpan>Winners</MenuSpan>
+        <Link to="winners" spy={true} smooth={true} offset={-80}>
+          <MenuSpan>Winners</MenuSpan>
+        </Link>
       </MenuDiv>
       <NextDraw>Next Draw Saturday 2:00 PM UTC</NextDraw>
     </HeaderNav>

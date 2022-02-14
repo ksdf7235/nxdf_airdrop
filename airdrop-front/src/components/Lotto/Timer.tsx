@@ -1,10 +1,10 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
 function Timer() {
   
   const TimeLeft=()=>{
-    let drawtime=new Date("February 12, 2022 23:00:00").getTime()/1000;
+    let drawtime=new Date("February 19, 2022 23:00:00").getTime()/1000;
     let now=new Date().getTime()/1000;
     let lefttime=drawtime-now;
     let duration=moment.duration(lefttime,'seconds');
