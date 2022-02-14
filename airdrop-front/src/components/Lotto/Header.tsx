@@ -52,6 +52,7 @@ const LogoDiv = styled.div`
 const Logo=styled.h1`
   font-size:1.7rem;
   font-weight:700;
+
 `
 function Header() {
   return (
