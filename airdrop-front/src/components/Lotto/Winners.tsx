@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './css/MainCenter/font.css'
+import {
+  ref,child,get
+} from "@firebase/database"
+import {dbService} from "./firebase"
 
 const WinnersDiv=styled.div`
   height:100%;
@@ -59,7 +63,29 @@ const Table=styled.table`
     }
   }
 `
+
 function Winners() {
+  interface WinnersData{
+    date:string,
+    lottoNumber:string,
+    prizePool:string,
+    winningTicket:string[]
+  }
+  const [winners,setWinners]=useState<WinnersData[]>([])
+  useEffect(()=>{
+    const dbRef=ref(dbService);
+    get(child(dbRef,'winners/')).then((snapshot)=>{
+      if(snapshot.exists()){
+        console.log(snapshot.val())
+        setWinners(snapshot.val())
+      } else {
+        console.log("No data available")
+      }
+    }).catch((error)=>{
+    console.error(error)
+  })
+  },[])
+  //console.log(winners[0]["winningTicket"][0])
   return (
     <WinnersDiv id='winners'>
       <Title>HALL OF WINNERS</Title>
@@ -73,7 +99,7 @@ function Winners() {
         </tr>
         </thead>
         <tbody>
-          {data.map((data,index)=>
+          {winners.map((data,index)=>
           <tr key={index}>
           <th style={{color:'rgb(244,134,193)'}}>{data.lottoNumber}</th>
           <th>{data.date}</th>
@@ -96,73 +122,73 @@ function Winners() {
   );
 }
 
-const data=[
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1']]
-  ,
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1']]
-  ,
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1'],
-    ['#2077','0.9'],
-    ['#3430','0.45']]
-  ,
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1']]
-    ,
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1']]
-    ,
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1'],
-    ['#2077','0.9'],
-    ['#3430','0.45']],
-  prizePool:'11.04'
-  },
-  {
-  lottoNumber:'LOTTO#14',
-  date:'2022-02-11',
-  winningTicket:
-    [['#1866','2.21'],
-    ['#2220','1.1']]
-    ,
-  prizePool:'11.04'
-  }
-]
+// const data=[
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1']]
+//   ,
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1']]
+//   ,
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1'],
+//     ['#2077','0.9'],
+//     ['#3430','0.45']]
+//   ,
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1']]
+//     ,
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1']]
+//     ,
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1'],
+//     ['#2077','0.9'],
+//     ['#3430','0.45']],
+//   prizePool:'11.04'
+//   },
+//   {
+//   lottoNumber:'LOTTO#14',
+//   date:'2022-02-11',
+//   winningTicket:
+//     [['#1866','2.21'],
+//     ['#2220','1.1']]
+//     ,
+//   prizePool:'11.04'
+//   }
+// ]
 
 export default Winners;

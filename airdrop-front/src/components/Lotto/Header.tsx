@@ -52,7 +52,6 @@ const LogoDiv = styled.div`
 const Logo=styled.h1`
   font-size:1.7rem;
   font-weight:700;
-
 `
 function Header() {
   return (
@@ -66,9 +65,6 @@ function Header() {
       <MenuDiv>
         <Link to="About" spy={true} smooth={true} offset={-80}>
           <MenuSpan>About us</MenuSpan>
-        </Link>
-        <Link to="Calculator" spy={true} smooth={true} offset={-80}>
-          <MenuSpan>Calculator</MenuSpan>
         </Link>
         <Link to="winners" spy={true} smooth={true} offset={-80}>
           <MenuSpan>Winners</MenuSpan>
