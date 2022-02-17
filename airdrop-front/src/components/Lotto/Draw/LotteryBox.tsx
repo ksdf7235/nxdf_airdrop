@@ -1,11 +1,12 @@
 import React from "react";
 import LotteryItem from "./LotteryItem";
-import "./index.css";
+import "./lottoIndex.css";
 import {
-  ref,child,set
+  ref,set
 } from "@firebase/database"
 import {dbService} from "../firebase"
 const numbers = [...Array(10).keys()];
+
 
 export default class LotteryBox extends React.Component<
     LotteryBoxProps,
@@ -39,7 +40,7 @@ export default class LotteryBox extends React.Component<
     
     render() {
       if(this.state.number.includes(0)===false){
-        const DrawDay=new Date(2022,2,19)
+        const DrawDay=new Date()
         const StringDate=DrawDay.toDateString()
         //console.log(this.state.number)
         set(ref(dbService,'drawnumber/'+StringDate),{
@@ -48,8 +49,7 @@ export default class LotteryBox extends React.Component<
       }
     
         return (
-            <>
-            
+       <>
                 <div id="numbers">
                     <LotteryItem
                         index="0"
@@ -86,7 +86,8 @@ export default class LotteryBox extends React.Component<
                       Draw
                     </button>
                 </div>
-            </>
+          </>
+        
         );
     }
 }

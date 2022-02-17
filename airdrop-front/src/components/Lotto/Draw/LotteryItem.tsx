@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./lottoIndex.css";
 export default class LotteryItem extends React.Component<
     LotteryItemProps,
     LotteryItemState

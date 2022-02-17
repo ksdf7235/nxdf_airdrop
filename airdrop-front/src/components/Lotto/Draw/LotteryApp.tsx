@@ -11,7 +11,7 @@ const Div=styled.div`
   color:black;
   background-color:#453C70;
 `
-export default function LotteryApp() {
+ function LotteryApp() {
     return (
         <Div>
             <h1 id="title">Lotto Draw</h1>
@@ -19,3 +19,6 @@ export default function LotteryApp() {
         </Div>
     );
 }
+
+
+export default LotteryApp;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useIsMobile } from './useIsMobile'
-import {Connection, PublicKey,Transaction,TransactionSignature} from '@solana/web3.js'
-import { Adapter, MessageSignerWalletAdapterProps, SendTransactionOptions, SignerWalletAdapterProps, WalletName, WalletReadyState } from '@solana/wallet-adapter-base';
+
 
 // export interface WalletContextState{
 //   autoConnect: boolean;
