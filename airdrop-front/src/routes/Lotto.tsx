@@ -4,6 +4,7 @@ import Main from '../components/Lotto/Main'
 import About from '../components/Lotto/About'
 import Winners from '../components/Lotto/Winners'
 import Footer from '../components/Lotto/Footer'
+import LotteryApp from '../components/Lotto/Draw/LotteryApp'
 function Lotto() {
   return (
     <>

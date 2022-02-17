@@ -1,5 +1,22 @@
 import { useEffect, useState } from 'react'
 import { useIsMobile } from './useIsMobile'
+import {Connection, PublicKey,Transaction,TransactionSignature} from '@solana/web3.js'
+import { Adapter, MessageSignerWalletAdapterProps, SendTransactionOptions, SignerWalletAdapterProps, WalletName, WalletReadyState } from '@solana/wallet-adapter-base';
+
+// export interface WalletContextState{
+//   autoConnect: boolean;
+//   publicKey: PublicKey ;
+//   connecting: boolean;
+//   connected: boolean;
+//   disconnecting: boolean;
+//   select(walletName: WalletName): void;
+//   connect(): Promise<void>;
+//   disconnect(): Promise<void>;
+//   sendTransaction(transaction: Transaction, connection: Connection, options?: SendTransactionOptions): Promise<TransactionSignature>;
+//   signTransaction: SignerWalletAdapterProps['signTransaction'] | undefined;
+//   signAllTransactions: SignerWalletAdapterProps['signAllTransactions'] | undefined;
+//   signMessage: MessageSignerWalletAdapterProps['signMessage'] | undefined;
+// }
 
 export const useWallet = () => {
   const [walletAddress, setWalletAddress] = useState(null)
