@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-input-slider';
 import Timer from '../Lotto/Timer';
@@ -51,7 +51,7 @@ const SliderLabel=styled.div`
 
 function Main() {
   const [loading,setloading] = useState(false);
-  const {connectWallet, walletAddress} =useWallet();
+  const {connectWallet} =useWallet();
   
   const [nxdfInfo,setNxdfInfo]=useState({})
   const [current,setCurrent]=useState(0)
