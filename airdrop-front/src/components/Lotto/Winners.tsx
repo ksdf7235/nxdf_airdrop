@@ -9,7 +9,7 @@ import {dbService} from "./firebase"
 const WinnersDiv=styled.div`
   height:100%;
   width:100vw;
-  background-color:#524880;
+  background-color:#453C70;
   display:flex;
   flex-direction:column;
   padding:50px 0 100px 0;
@@ -76,7 +76,6 @@ function Winners() {
     const dbRef=ref(dbService);
     get(child(dbRef,'winners/')).then((snapshot)=>{
       if(snapshot.exists()){
-        console.log(snapshot.val())
         setWinners(snapshot.val())
       } else {
         console.log("No data available")

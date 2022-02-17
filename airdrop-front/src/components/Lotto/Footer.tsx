@@ -5,7 +5,7 @@ import { Link } from 'react-scroll'
 const FooterDiv=styled.div`
   width:100vw;
   height:45vh;
-  background-color:#453C70;
+  background-color:#524880;
   display:flex;
   align-items:center;
   justify-content:center;
