@@ -1,7 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
+import BlackJack from './routes/Blackjack'
+import BlackJackPage from './routes/BlackjackPage'
 import Done from './routes/Done'
+import Lotto from './routes/Lotto'
 import Main from './routes/Main'
 import GlobalStyle from './style/GlobalCss'
 import ResetCSS from './style/ResetCss'
@@ -29,6 +32,30 @@ const RootRouter = (props: Props) => {
             </BackgroundWrapper>
           }
         />
+        <Route
+          path="/events/lotto"
+          element={
+            <BackgroundWrapper>
+              <Lotto/>
+            </BackgroundWrapper>
+          }
+        />
+        <Route
+          path="/events/blackjack/:id"
+          element={
+            <BackgroundWrapper>
+              <BlackJack/>
+            </BackgroundWrapper>
+          }
+        />
+        <Route
+          path="/events/blackjack"
+          element={
+            <BackgroundWrapper>
+              <BlackJackPage/>
+            </BackgroundWrapper>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )
@@ -42,3 +69,4 @@ const BackgroundWrapper = styled.div`
   min-width: 100vw;
   min-height: 100vh;
 `
+
