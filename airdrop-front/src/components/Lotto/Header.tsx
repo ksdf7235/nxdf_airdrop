@@ -63,6 +63,9 @@ function Header() {
         </LogoDiv>
       </Link>
       <MenuDiv>
+        <Link to="Buyers" spy={true} smooth={true} offset={-80}>
+          <MenuSpan>Ticket Buyers</MenuSpan>
+        </Link>
         <Link to="About" spy={true} smooth={true} offset={-80}>
           <MenuSpan>About us</MenuSpan>
         </Link>

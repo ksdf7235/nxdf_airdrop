@@ -2,11 +2,10 @@ import React from "react";
 import LotteryItem from "./LotteryItem";
 import "./lottoIndex.css";
 import {
-  ref,set
+  ref,push
 } from "@firebase/database"
 import {dbService} from "../firebase"
 const numbers = [...Array(10).keys()];
-
 
 export default class LotteryBox extends React.Component<
     LotteryBoxProps,
@@ -19,7 +18,8 @@ export default class LotteryBox extends React.Component<
             effect: false,
         };
     }
-
+    
+    
     randomize = () => {
         if (!this.state.effect) {
             const numberCopy = numbers.map((x) => x);
@@ -37,17 +37,22 @@ export default class LotteryBox extends React.Component<
             }, 80000);
         }
     };
-    
+
+
     render() {
+      const hook = window.location.search;
+      const userId=hook.split('=')
+      const Ref=ref(dbService,'drawnumber/')
+      const today=new Date()
+      
       if(this.state.number.includes(0)===false){
-        const DrawDay=new Date()
-        const StringDate=DrawDay.toDateString()
-        //console.log(this.state.number)
-        set(ref(dbService,'drawnumber/'+StringDate),{
-          numbers: this.state.number
+        push(Ref,{
+          numbers: this.state.number.join(''),
+          date: today.toUTCString(),
+          userid:userId[1]
         })
+        .then(()=>console.log(Ref))
       }
-    
         return (
        <>
                 <div id="numbers">
