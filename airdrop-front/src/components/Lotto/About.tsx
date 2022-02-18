@@ -7,7 +7,7 @@ const AboutDiv=styled.div`
   height:100%;
   widht:100%;
   padding-top: 60px;
-  background-color:#524880; 
+  background-color:#453C70;
 `
 const Welcome=styled.h1`
   font-size:3em;

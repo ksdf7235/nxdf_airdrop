@@ -11,6 +11,7 @@ import {PotContainer,PotSolContainer,PotUsdContainer,CurrentJackpot,GetTicket,Bu
 // import { useConnection } from '@solana/wallet-adapter-react';
 // import { SendSPLTransaction } from '../../util/send-spl-transaction'
 import { useQuery } from '../../hooks/useQuery';
+import { Link } from 'react-router-dom';
 
 
 const MainLayout = styled.div`
@@ -97,14 +98,18 @@ function Main() {
     ToUsd()
     
   },[])
-  //console.log(walletAddress)
+  
+  //events/lotto 페이지 진입 시 user_id 없으며 home화면으로 이동, 진입하면 지갑 연동
+  useEffect(()=>{
+    if (userId===null){
+      alert('discord login please!')
+      window.location.replace('/')
+    }
+    else{
+      connectWallet()
+    }
+  },[])
 
-  const buyTicket=()=>{
-    
-    console.log(userId)
-    connectWallet()
-
-  }
   
   return (
     <MainLayout id="Main">
@@ -120,10 +125,12 @@ function Main() {
             <TimerContainer>
                 <Timer></Timer>
             </TimerContainer>
-              <GetTicket onClick={buyTicket}>
+            <Link to={`/events/lotto/draw/?user_id=${userId}`}>
+              <GetTicket>
                 {/* {console.log(walletAddress)} */}
                 GET {noftic} TICKET
               </GetTicket>
+            </Link>
             </BackgroundDiv>
         </GetTicketContainer>
         <BuyMultipleTicket onClick={()=>setMultiple(!multiple)}>Buy Multiple Tickets</BuyMultipleTicket>

@@ -9,7 +9,7 @@ import {dbService} from "./firebase"
 const WinnersDiv=styled.div`
   height:100%;
   width:100vw;
-  background-color:#453C70;
+  background-color:#524880;
   display:flex;
   flex-direction:column;
   padding:50px 0 100px 0;
